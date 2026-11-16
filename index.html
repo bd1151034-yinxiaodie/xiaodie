@@ -1,544 +1,1199 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>尹小蝶 | 個人專業簡介與作品集</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Noto Sans TC & Inter & Fira Code -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            200: '#bae0fd',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        },
-                        surface: {
-                            light: '#fafaf9',
-                            card: '#ffffff',
-                            subtle: '#f1f5f9',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Noto Sans TC"', 'Inter', 'sans-serif'],
-                        mono: ['"Fira Code"', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>尹小蝶 | 個人資訊與作品集</title>
+  <meta name="description" content="尹小蝶 — 黎明技術學院數位多媒體系。喜歡簡單生活，也喜歡認真對待每一件事。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #fafaf9;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f3f4f6;
+      --bg-accent-soft: #eef2ff;
+      --bg-teal-soft: #f0fdfa;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-primary: #4f46e5;
+      --accent-primary-hover: #4338ca;
+      --accent-secondary: #0d9488;
+      --border-light: #e2e8f0;
+      --border-subtle: #f1f5f9;
+      --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.07);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Subtle ambient background pattern */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(79, 70, 229, 0.045) 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(13, 148, 136, 0.045) 0%, transparent 45%),
+        linear-gradient(to right, rgba(226, 232, 240, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.35) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 249, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #4f46e5, #0d9488);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.22);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      padding: 4px 0;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent-primary);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 6px 10px;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 84px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .dept-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      box-shadow: var(--shadow-xs);
+      margin-bottom: 20px;
+    }
+
+    .dept-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-secondary);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.1rem);
+      font-weight: 700;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(120deg, #4f46e5, #0d9488);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-motto {
+      font-size: 1.18rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      padding-left: 16px;
+      border-left: 3px solid var(--accent-primary);
+      margin-bottom: 28px;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 34px;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border-color: var(--border-light);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    /* Profile Card Visual on Hero Right */
+    .profile-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .window-dots {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .dots-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-r { background: #fca5a5; }
+    .dot-y { background: #fcd34d; }
+    .dot-g { background: #6ee7b7; }
+
+    .file-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
+
+    /* Profile Image / Avatar Section */
+    .avatar-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .avatar-ring {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, #4f46e5, #0d9488);
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.16);
+    }
+
+    .avatar-ring:hover {
+      transform: scale(1.03);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #ffffff;
+      display: block;
+      border: 2px solid #ffffff;
+    }
+
+    .avatar-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .avatar-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .avatar-role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+
+    .upload-photo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--accent-primary);
+      background: var(--bg-accent-soft);
+      border: 1px solid rgba(79, 70, 229, 0.18);
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .upload-photo-btn:hover {
+      background: var(--accent-primary);
+      color: #ffffff;
+    }
+
+    .code-snippet {
+      font-family: 'JetBrains Mono', 'Noto Sans TC', monospace;
+      font-size: 0.84rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 15px 16px;
+      margin-bottom: 16px;
+    }
+
+    .c-kw { color: #4f46e5; font-weight: 500; }
+    .c-str { color: #0d9488; }
+    .c-prop { color: #334155; }
+
+    .math-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-accent-soft);
+      border: 1px solid rgba(79, 70, 229, 0.14);
+      border-radius: var(--radius-sm);
+      padding: 11px 15px;
+      font-size: 0.86rem;
+      color: var(--text-primary);
+    }
+
+    .math-formula {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+
+    /* Section Base */
+    section {
+      padding: 68px 0;
+    }
+
+    .section-header {
+      margin-bottom: 36px;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-primary);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-top: 6px;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .info-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+      border-color: #cbd5e1;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      font-size: 1.25rem;
+    }
+
+    .icon-indigo {
+      background: var(--bg-accent-soft);
+      color: var(--accent-primary);
+    }
+
+    .icon-teal {
+      background: var(--bg-teal-soft);
+      color: var(--accent-secondary);
+    }
+
+    .icon-amber {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    .info-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .info-card p {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .skill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .skill-card:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: rgba(79, 70, 229, 0.3);
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .skill-title-group h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .skill-en {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .skill-badge {
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .skill-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Interests Section */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .interest-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+    }
+
+    .interest-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .interest-emoji {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--bg-subtle);
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .interest-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+    }
+
+    .interest-body p {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+    }
+
+    /* Contact Section */
+    .contact-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .contact-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: var(--transition);
+    }
+
+    .contact-item:hover {
+      background: #ffffff;
+      border-color: rgba(79, 70, 229, 0.35);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-value {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .mini-btn {
+      flex: 1;
+      padding: 7px 12px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      background: #ffffff;
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .mini-btn:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--bg-accent-soft);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 32px 0 44px;
+      margin-top: 24px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .back-top {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .back-top:hover {
+      color: var(--accent-primary);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--text-primary);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid,
+      .interests-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 56px 0 48px;
+      }
+      section {
+        padding: 48px 0;
+      }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--bg-surface);
+        flex-direction: column;
+        padding: 18px 24px;
+        border-bottom: 1px solid var(--border-light);
+        gap: 14px;
+        box-shadow: var(--shadow-sm);
+      }
+      nav ul.open {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .contact-box {
+        padding: 24px 20px;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-800 flex flex-col min-h-screen">
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
 
-    <!-- Toast Notification Container -->
-    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-100px] opacity-0 transition-all duration-300 ease-out bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center space-x-3 pointer-events-none">
-        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-        <span id="toast-message" class="text-sm font-medium">複製成功！</span>
+  <header>
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">蝶</span>
+        <span>尹小蝶</span>
+      </a>
+      <button class="mobile-menu-btn" id="menuToggle" aria-label="切換選單">選單</button>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#about">關於我</a></li>
+          <li><a href="#skills">專業技能</a></li>
+          <li><a href="#interests">日常興趣</a></li>
+          <li><a href="#contact">聯繫方式</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Navigation Bar -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 border-b border-slate-200/80 transition-all">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Logo / Brand -->
-            <a href="#" class="flex items-center space-x-2 group">
-                <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
-                    蝶
-                </div>
-                <span class="font-bold text-slate-800 tracking-tight text-lg group-hover:text-brand-600 transition-colors">尹小蝶</span>
-            </a>
-
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
-                <a href="#about" class="hover:text-brand-600 transition-colors">關於我</a>
-                <a href="#skills" class="hover:text-brand-600 transition-colors">專業技能</a>
-                <a href="#interests" class="hover:text-brand-600 transition-colors">興趣愛好</a>
-                <a href="#contact" class="hover:text-brand-600 transition-colors">聯繫方式</a>
-            </nav>
-
-            <!-- Contact Action Button -->
-            <div class="hidden md:block">
-                <a href="#contact" class="inline-flex items-center space-x-2 px-4 py-2 text-sm font-medium text-white bg-slate-900 hover:bg-brand-600 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-                    <i class="fa-regular fa-paper-plane text-xs"></i>
-                    <span>立即聯繫</span>
-                </a>
-            </div>
-
-            <!-- Mobile Menu Toggle Button -->
-            <button id="mobile-menu-btn" aria-label="打開導覽選單" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="dept-badge">
+            <span class="dept-dot"></span>
+            <span>黎明技術學院 · 數位多媒體系</span>
+          </div>
+          <h1>你好，我是 <span>尹小蝶</span></h1>
+          <p class="hero-motto">喜歡簡單生活，也喜歡認真對待每一件事。</p>
+          <p class="hero-desc">
+            就讀於黎明技術學院數位多媒體系，熱愛在簡約有序的日常裡探索程式邏輯與數學思維，將細膩與專注注入每一次創作與學習之中。
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">與我聯繫</a>
+            <a href="#skills" class="btn btn-secondary">查看技能與專長</a>
+          </div>
         </div>
 
-        <!-- Mobile Menu Navigation -->
-        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600">關於我</a>
-            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600">專業技能</a>
-            <a href="#interests" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600">興趣愛好</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600">聯繫方式</a>
+        <div class="profile-card" aria-label="個人檔案摘要卡片">
+          <div class="window-dots">
+            <div class="dots-group">
+              <span class="dot dot-r"></span>
+              <span class="dot dot-y"></span>
+              <span class="dot dot-g"></span>
+            </div>
+            <span class="file-label">profile.ts</span>
+          </div>
+
+          <!-- Profile Picture Block -->
+          <div class="avatar-header">
+            <div class="avatar-ring" id="avatarTrigger" title="點擊預覽更換頭像">
+              <!-- 提示：若要固定顯示自己的大頭貼，請將下方 src="..." 改為你的圖片檔名（例如 src="profile.jpg"）或圖片網址 -->
+              <img
+                id="profileImage"
+                class="avatar-img"
+                src="01.jpg"
+                alt="尹小蝶的個人頭像"
+              />
+            </div>
+            <div class="avatar-meta">
+              <div class="avatar-name">尹小蝶</div>
+              <div class="avatar-role">數位多媒體系 · 程式與數理</div>
+              <button type="button" class="upload-photo-btn" id="uploadBtn">📷 更換照片</button>
+              <input type="file" id="avatarInput" accept="image/*" hidden />
+            </div>
+          </div>
+
+          <div class="code-snippet">
+            <span class="c-kw">const</span> <span class="c-prop">student</span> = {<br />
+            &nbsp;&nbsp;<span class="c-prop">name</span>: <span class="c-str">"尹小蝶"</span>,<br />
+            &nbsp;&nbsp;<span class="c-prop">department</span>: <span class="c-str">"黎明技術學院數位多媒體系"</span>,<br />
+            &nbsp;&nbsp;<span class="c-prop">skills</span>: [<span class="c-str">"寫代碼"</span>, <span class="c-str">"微積分"</span>],<br />
+            &nbsp;&nbsp;<span class="c-prop">interests</span>: [<span class="c-str">"讀書"</span>, <span class="c-str">"睡覺"</span>],<br />
+            &nbsp;&nbsp;<span class="c-prop">attitude</span>: <span class="c-str">"認真對待每一件事"</span><br />
+            };
+          </div>
+
+          <div class="math-pill">
+            <span>日常積累與專注</span>
+            <span class="math-formula">∫ focus(t) dt → 成長</span>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main class="flex-grow">
-        <!-- Hero Section -->
-        <section class="relative py-16 md:py-24 overflow-hidden">
-            <!-- Ambient Background Shapes -->
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-brand-100 to-purple-100 rounded-full blur-3xl opacity-60 -z-10 pointer-events-none"></div>
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">About Me</span>
+          <h2 class="section-title">關於我</h2>
+          <p class="section-subtitle">保持生活純粹，把專注留給真正重要的事物。</p>
+        </div>
 
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <!-- Left Hero Content -->
-                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200/60 text-brand-700 text-xs font-semibold tracking-wide">
-                            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                            <span>數位多媒體設計與程式邏輯</span>
-                        </div>
-
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-tight">
-                            你好，我是 <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-indigo-600">尹小蝶</span>
-                        </h1>
-
-                        <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                            就讀於 <strong class="text-slate-800 font-semibold">黎明技術學院 數位多媒體系</strong>。專注於現代網頁開發與微積分邏輯推演，將數位美學與程式代碼極簡呈現。
-                        </p>
-
-                        <!-- Motto Highlight Card -->
-                        <div class="p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-slate-200/80 shadow-sm hover:shadow transition-shadow">
-                            <div class="flex items-start space-x-3 text-left">
-                                <i class="fa-solid fa-quote-left text-brand-500 text-xl mt-1"></i>
-                                <div>
-                                    <p class="text-slate-700 font-medium italic">
-                                        「喜歡簡單生活，也喜歡認真對待每一件事。」
-                                    </p>
-                                    <span class="text-xs text-slate-400 mt-1 block">—— 個人座右銘</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CTA Action Buttons -->
-                        <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                            <a href="#skills" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium shadow-md shadow-brand-500/20 hover:shadow-lg transition-all duration-200 flex items-center space-x-2">
-                                <span>探索專業技能</span>
-                                <i class="fa-solid fa-arrow-down text-sm"></i>
-                            </a>
-                            <a href="#contact" class="px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-medium border border-slate-200 shadow-sm hover:shadow transition-all duration-200 flex items-center space-x-2">
-                                <span>取得聯繫</span>
-                                <i class="fa-regular fa-envelope text-sm"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Right Hero Card / Visual Element -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative w-full max-w-md">
-                            <!-- Outer Decorative Ring -->
-                            <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-500 to-indigo-500 blur-xl opacity-20 transform rotate-3 scale-105"></div>
-                            
-                            <!-- Profile Card -->
-                            <div class="relative bg-white border border-slate-200/90 rounded-3xl p-8 shadow-xl space-y-6">
-                                <!-- Avatar Visual -->
-                                <div class="relative mx-auto w-32 h-32 rounded-2xl bg-gradient-to-tr from-blue-50 to-indigo-100 border-2 border-slate-100 shadow-inner flex items-center justify-center group overflow-hidden">
-                                    <div class="text-brand-600 group-hover:scale-110 transition-transform duration-300">
-                                        <i class="fa-solid fa-wand-magic-sparkles text-5xl"></i>
-                                    </div>
-                                    <div class="absolute bottom-0 inset-x-0 bg-slate-900/60 backdrop-blur-xs py-1 text-center">
-                                        <span class="text-[10px] text-white tracking-widest uppercase font-mono">Developer</span>
-                                    </div>
-                                </div>
-
-                                <div class="text-center space-y-1">
-                                    <h3 class="text-xl font-bold text-slate-800">尹小蝶</h3>
-                                    <p class="text-sm text-slate-500">數位多媒體系學生</p>
-                                </div>
-
-                                <hr class="border-slate-100">
-
-                                <!-- Quick Info List -->
-                                <div class="space-y-3 text-sm text-slate-600">
-                                    <div class="flex items-center justify-between py-1">
-                                        <span class="text-slate-400 font-medium"><i class="fa-solid fa-graduation-cap w-5 text-brand-500"></i>學校</span>
-                                        <span class="font-medium text-slate-700">黎明技術學院</span>
-                                    </div>
-                                    <div class="flex items-center justify-between py-1">
-                                        <span class="text-slate-400 font-medium"><i class="fa-solid fa-laptop-code w-5 text-brand-500"></i>專業科系</span>
-                                        <span class="font-medium text-slate-700">數位多媒體系</span>
-                                    </div>
-                                    <div class="flex items-center justify-between py-1">
-                                        <span class="text-slate-400 font-medium"><i class="fa-solid fa-heart w-5 text-brand-500"></i>生活哲學</span>
-                                        <span class="font-medium text-slate-700">簡單與專注</span>
-                                    </div>
-                                </div>
-
-                                <div class="pt-2">
-                                    <div class="bg-slate-50 rounded-xl p-3 text-xs font-mono text-slate-600 flex items-center justify-between">
-                                        <span>Status: <span class="text-emerald-600 font-semibold">Active & Building</span></span>
-                                        <i class="fa-solid fa-code text-slate-400"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-16 bg-white border-y border-slate-200/60">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-12">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">About Me</h2>
-                    <h3 class="text-3xl font-bold text-slate-900">關於我的簡述</h3>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Feature Card 1 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-feather"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-slate-800 mb-2">簡單生活</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            熱愛簡約質樸的生活節奏，不拘泥於繁複表象，讓思緒保持清澈，將精力專注於真正關鍵的事物。
-                        </p>
-                    </div>
-
-                    <!-- Feature Card 2 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-shapes"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-slate-800 mb-2">數位多媒體</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            就讀黎明技術學院數位多媒體系，深入學習數位內容設計、視覺美學與現代前端互動技術的應用。
-                        </p>
-                    </div>
-
-                    <!-- Feature Card 3 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-300 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
-                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-lightbulb"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-slate-800 mb-2">認真態度</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            不論是寫代碼、演算微積分還是日常學習，只要決定去做，便全力以赴、認真處理好每個細節。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="py-16 md:py-24">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Expertise</h2>
-                    <h3 class="text-3xl font-bold text-slate-900">核心專業技能</h3>
-                    <p class="text-slate-500 mt-2 text-sm">結合程式開發實作與數學邏輯演算的高階能力</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Skill Card: Coding -->
-                    <div class="bg-white rounded-2xl p-8 border border-slate-200/90 shadow-sm hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl border border-blue-100">
-                                    <i class="fa-solid fa-code"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-800">寫代碼 (Coding)</h4>
-                                    <p class="text-xs text-slate-400">Software & Web Development</p>
-                                </div>
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Core Skill</span>
-                        </div>
-
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                            熱衷於將邏輯與多媒體設計融入程式碼中，撰寫結構清晰、易維護的軟體與前端體驗。
-                        </p>
-
-                        <!-- Code Preview Graphic -->
-                        <div class="bg-slate-900 rounded-xl p-4 font-mono text-xs text-slate-200 overflow-x-auto shadow-inner">
-                            <div class="flex items-center space-x-1.5 mb-3 border-b border-slate-800 pb-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-                                <span class="text-[10px] text-slate-500 ml-2">Developer.js</span>
-                            </div>
-                            <pre><span class="text-purple-400">const</span> developer = {
-  name: <span class="text-emerald-300">'尹小蝶'</span>,
-  attitude: <span class="text-emerald-300">'Simple Life & Focused Mind'</span>,
-  code: <span class="text-blue-400 font-bold">() =></span> <span class="text-emerald-300">'Building elegant software'</span>
-};</pre>
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium">JavaScript</span>
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium">HTML5 / CSS3</span>
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium">Tailwind CSS</span>
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium">Web Interactive Design</span>
-                        </div>
-                    </div>
-
-                    <!-- Skill Card: Calculus -->
-                    <div class="bg-white rounded-2xl p-8 border border-slate-200/90 shadow-sm hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl border border-indigo-100">
-                                    <i class="fa-solid fa-calculator"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-800">微積分 (Calculus)</h4>
-                                    <p class="text-xs text-slate-400">Mathematical Logic & Calculus</p>
-                                </div>
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700">Analytical</span>
-                        </div>
-
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                            具備優異的數學邏輯與邏輯推演能力，能靈活理解極限、導數與積分概念，為演算法邏輯與數據計算奠定良好基石。
-                        </p>
-
-                        <!-- Math Formula Preview Graphic -->
-                        <div class="bg-slate-900 rounded-xl p-4 font-mono text-xs text-slate-200 overflow-x-auto shadow-inner flex flex-col justify-center min-h-[105px]">
-                            <div class="flex items-center space-x-1.5 mb-2 border-b border-slate-800 pb-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
-                                <span class="text-[10px] text-slate-500">Calculus_Logic.math</span>
-                            </div>
-                            <div class="text-center py-2 text-indigo-300 text-sm font-semibold tracking-wide">
-                                f'(x) = lim<sub>h→0</sub> [ f(x+h) - f(x) ] / h
-                            </div>
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium">微分應用 (Differentiation)</span>
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium">積分推演 (Integration)</span>
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium">嚴謹邏輯思考</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interests Section -->
-        <section id="interests" class="py-16 bg-slate-100/70 border-y border-slate-200/80">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-12">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Life & Hobbies</h2>
-                    <h3 class="text-3xl font-bold text-slate-900">興趣與生活風格</h3>
-                    <p class="text-slate-500 mt-2 text-sm">在安靜學習與深度休養之間維持最舒服的平衡</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <!-- Interest 1: Reading -->
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm flex items-start space-x-5 hover:border-brand-300 transition-all">
-                        <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl shrink-0 border border-amber-100">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-slate-800 mb-1">讀書 (Reading)</h4>
-                            <p class="text-sm text-slate-600 leading-relaxed">
-                                喜歡在安靜的時間閱讀書籍，吸收新知識與豐富的內在世界，激發設計與寫代碼時的全新靈感。
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Interest 2: Sleeping -->
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm flex items-start space-x-5 hover:border-brand-300 transition-all">
-                        <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-500 flex items-center justify-center text-2xl shrink-0 border border-indigo-100">
-                            <i class="fa-solid fa-bed"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-slate-800 mb-1">睡覺 (Sleeping & Rest)</h4>
-                            <p class="text-sm text-slate-600 leading-relaxed">
-                                良好的睡眠是高效思考與專注的基石。在充沛的休息之後，能更有能量地對待生活與專案中的每件事。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 md:py-24">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Get In Touch</h2>
-                    <h3 class="text-3xl font-bold text-slate-900">聯繫方式</h3>
-                    <p class="text-slate-500 mt-2 text-sm">歡迎隨時透過以下管道與我取得聯繫與交流</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    <!-- Contact Card: Email -->
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
-                                <i class="fa-regular fa-envelope"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs text-slate-400 font-medium">電子郵件</span>
-                                <h4 class="text-base font-bold text-slate-800 break-all">BD1151034@venus.lit.edu.tw</h4>
-                            </div>
-                        </div>
-                        <div class="pt-6 flex items-center space-x-2">
-                            <a href="mailto:BD1151034@venus.lit.edu.tw" class="flex-1 py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium text-center transition-colors">
-                                發送郵件
-                            </a>
-                            <button onclick="copyToClipboard('BD1151034@venus.lit.edu.tw', 'Email')" aria-label="複製 Email" class="p-2 rounded-lg bg-slate-100 hover:bg-brand-50 text-slate-600 hover:text-brand-600 transition-colors">
-                                <i class="fa-regular fa-copy text-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Contact Card: Line -->
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
-                                <i class="fa-brands fa-line"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs text-slate-400 font-medium">LINE ID</span>
-                                <h4 class="text-base font-bold text-slate-800">尹小蝶</h4>
-                            </div>
-                        </div>
-                        <div class="pt-6">
-                            <button onclick="copyToClipboard('尹小蝶', 'Line ID')" class="w-full py-2 px-3 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-medium flex items-center justify-center space-x-2 transition-colors">
-                                <i class="fa-regular fa-copy text-xs"></i>
-                                <span>複製 Line ID</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Contact Card: Instagram -->
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl">
-                                <i class="fa-brands fa-instagram"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs text-slate-400 font-medium">Instagram</span>
-                                <h4 class="text-base font-bold text-slate-800">@chanvotey</h4>
-                            </div>
-                        </div>
-                        <div class="pt-6 flex items-center space-x-2">
-                            <a href="https://instagram.com/chanvotey" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-lg bg-slate-100 hover:bg-pink-50 text-slate-700 hover:text-pink-600 text-xs font-medium text-center transition-colors">
-                                開啟 IG 主頁
-                            </a>
-                            <button onclick="copyToClipboard('chanvotey', 'Instagram ID')" aria-label="複製 Instagram ID" class="p-2 rounded-lg bg-slate-100 hover:bg-pink-50 text-slate-600 hover:text-pink-600 transition-colors">
-                                <i class="fa-regular fa-copy text-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-                <div class="w-7 h-7 rounded-md bg-brand-600 text-white flex items-center justify-center font-bold text-xs">
-                    蝶
-                </div>
-                <span class="text-slate-200 font-semibold text-sm">尹小蝶 (Yin Xiao-Die)</span>
-            </div>
-            
-            <p class="text-xs text-slate-500">
-                &copy; <span id="year"></span> 黎明技術學院 數位多媒體系. All rights reserved.
+        <div class="about-grid">
+          <article class="info-card">
+            <div class="card-icon icon-indigo">🎓</div>
+            <h3>學術背景</h3>
+            <p>
+              目前就讀於<strong>黎明技術學院數位多媒體系</strong>，結合多媒體視覺思維與數位技術基礎，培養兼具美感與邏輯的跨領域能力。
             </p>
+          </article>
 
-            <div class="flex items-center space-x-4 text-sm text-slate-400">
-                <a href="mailto:BD1151034@venus.lit.edu.tw" class="hover:text-white transition-colors" title="Email"><i class="fa-regular fa-envelope"></i></a>
-                <a href="https://instagram.com/chanvotey" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
+          <article class="info-card">
+            <div class="card-icon icon-teal">🌿</div>
+            <h3>簡單生活哲學</h3>
+            <p>
+              崇尚去繁就簡的生活步調，透過閱讀沉澱思緒、透過充足睡眠維持清晰頭腦，讓身心保持在最穩定的狀態。
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-icon icon-amber">✨</div>
+            <h3>認真對待每一件事</h3>
+            <p>
+              無論是撰寫程式、推導微積分算式，還是日常中的小細節，都秉持踏實、負責的態度一步步完成。
+            </p>
+          </article>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- JavaScript Interactions -->
-    <script>
-        // Set dynamic copyright year
-        document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Core Skills</span>
+          <h2 class="section-title">專業技能</h2>
+          <p class="section-subtitle">以程式實作與數學邏輯為核心的學習與解決問題能力。</p>
+        </div>
 
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div>
+              <div class="skill-top">
+                <div class="skill-title-group">
+                  <h3>寫代碼</h3>
+                  <span class="skill-en">Programming &amp; Logic Implementation</span>
+                </div>
+                <span class="skill-badge">核心技能</span>
+              </div>
+              <p class="skill-desc">
+                具備清晰的程式邏輯與結構化思考能力，享受將想法轉化為實際可運行程式的過程，注重程式碼的可讀性與細節完成度。
+              </p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">邏輯架構</span>
+              <span class="tag">網頁前端基礎</span>
+              <span class="tag">問題拆解</span>
+              <span class="tag">數位多媒體互動</span>
+            </div>
+          </article>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+          <article class="skill-card">
+            <div>
+              <div class="skill-top">
+                <div class="skill-title-group">
+                  <h3>微積分</h3>
+                  <span class="skill-en">Calculus &amp; Analytical Reasoning</span>
+                </div>
+                <span class="skill-badge">數理基礎</span>
+              </div>
+              <p class="skill-desc">
+                熟悉極限、微分與積分等核心概念，善於運用嚴謹的數學推演分析變化規律，為演算法與計算思維打下紮實根基。
+              </p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">極限與連續</span>
+              <span class="tag">微分分析</span>
+              <span class="tag">積分運算</span>
+              <span class="tag">嚴謹推導</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        // Close mobile menu when clicking nav links
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+    <!-- Interests -->
+    <section id="interests">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Lifestyle &amp; Interests</span>
+          <h2 class="section-title">日常興趣</h2>
+          <p class="section-subtitle">在動靜之間取得平衡的簡單日常。</p>
+        </div>
 
-        // Copy to Clipboard with Toast Notification
-        function copyToClipboard(text, typeName) {
-            const tempInput = document.createElement("textarea");
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            
-            try {
-                document.execCommand("copy");
-                showToast(`已成功複製 ${typeName}：${text}`);
-            } catch (err) {
-                showToast(`複製失敗，請手動複製`);
-            }
-            
-            document.body.removeChild(tempInput);
+        <div class="interests-grid">
+          <div class="interest-card">
+            <div class="interest-emoji" aria-hidden="true">📖</div>
+            <div class="interest-body">
+              <h3>讀書</h3>
+              <p>
+                喜歡在安靜的時光裡閱讀，透過文字拓展視野、累積知識，讓每一次思考更有深度與溫度。
+              </p>
+            </div>
+          </div>
+
+          <div class="interest-card">
+            <div class="interest-emoji" aria-hidden="true">🌙</div>
+            <div class="interest-body">
+              <h3>睡覺</h3>
+              <p>
+                重視高品質的休息與作息規律，相信充足的睡眠是保持專注力與認真面對每一天的重要能量來源。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="section-header" style="margin-bottom: 0;">
+            <span class="section-eyebrow">Get In Touch</span>
+            <h2 class="section-title">聯繫方式</h2>
+            <p class="section-subtitle">歡迎透過以下管道與我交流學習、討論程式或分享好書。</p>
+          </div>
+
+          <div class="contact-grid">
+            <!-- Email -->
+            <div class="contact-item">
+              <div>
+                <div class="contact-label">📧 Email</div>
+                <div class="contact-value">chanvoteyin4@gmail.com</div>
+              </div>
+              <div class="contact-actions">
+                <a href="mailto:chanvoteyin4@gmail.com" class="mini-btn">寄送郵件</a>
+                <button type="button" class="mini-btn" data-copy="chanvoteyin4@gmail.com" data-label="Email">複製信箱</button>
+              </div>
+            </div>
+
+            <!-- Line -->
+            <div class="contact-item">
+              <div>
+                <div class="contact-label">💬 Line ID</div>
+                <div class="contact-value">尹小蝶</div>
+              </div>
+              <div class="contact-actions">
+                <button type="button" class="mini-btn" data-copy="尹小蝶" data-label="Line ID">複製 Line ID</button>
+              </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="contact-item">
+              <div>
+                <div class="contact-label">📷 Instagram</div>
+                <div class="contact-value">@teyfeb</div>
+              </div>
+              <div class="contact-actions">
+                <a href="https://www.instagram.com/teyfeb/" target="_blank" rel="noopener noreferrer" class="mini-btn">前往 IG</a>
+                <button type="button" class="mini-btn" data-copy="teyfeb" data-label="Instagram 帳號">複製帳號</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 尹小蝶 · 黎明技術學院數位多媒體系</span>
+      <a href="#top" class="back-top">回到頂部 ↑</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+      });
+    });
+
+    // Toast notification helper
+    const toast = document.getElementById('toast');
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2600);
+    }
+
+    // Profile picture live preview upload
+    const avatarTrigger = document.getElementById('avatarTrigger');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const avatarInput = document.getElementById('avatarInput');
+    const profileImage = document.getElementById('profileImage');
+
+    function openFilePicker() {
+      avatarInput.click();
+    }
+
+    avatarTrigger.addEventListener('click', openFilePicker);
+    uploadBtn.addEventListener('click', openFilePicker);
+
+    avatarInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        showToast('請選擇圖片檔案（JPG、PNG、WEBP 等）');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        profileImage.src = e.target.result;
+        showToast('頭像預覽已更新！');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Copy to clipboard with toast feedback
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const text = btn.getAttribute('data-copy');
+        const label = btn.getAttribute('data-label');
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast(`已複製 ${label}：${text}`);
+        } catch (err) {
+          const tempInput = document.createElement('input');
+          tempInput.value = text;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          showToast(`已複製 ${label}：${text}`);
         }
+      });
+    });
 
-        // Show Toast Function
-        let toastTimeout;
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
+    // Active section highlight on scroll
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('nav a');
 
-            toastMsg.textContent = message;
-            toast.classList.remove('translate-y-[-100px]', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-[-100px]', 'opacity-0');
-            }, 3000);
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
         }
-    </script>
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
